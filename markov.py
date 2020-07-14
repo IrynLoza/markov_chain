@@ -12,6 +12,18 @@ def open_and_read_file(file_path):
 
     # your code goes here
 
+    input_path = ''
+    
+    for line in file_path:
+        line = line.rstrip()
+        full_line = line.split(' ')
+        for word in full_line:
+            input_path = input_path + ' ' + word
+
+    #return input_path
+    #"Contents of your file as one long string"
+    print(input_path)
+
     return "Contents of your file as one long string"
   
 
