@@ -57,61 +57,19 @@ def make_chains(text_string):
     word_list = text_string.split(' ')
     word_list.pop(0)
     chains = {}
-    
+   
+    for index in range(len(word_list) - 2): #-2 avoid last element, whick can be 1 item in pair key
+        key = word_list[index], word_list[index + 1]  # create the keys 
 
-    #word_count = {}
-    #for item in word_list:
+        value = word_list[index + 2] #every single word
+        #print(value)
 
-    #for i in range(len(text-1)):
-        #print text[i] text[i+1]
-    
-         
- 
-    for index in range(len(word_list)):
-    
-        #index = 0
-        #print(index)
-    
-        new_word_list = word_list[index: index + 2]
-        new_tuple = tuple(new_word_list)
-        chains[new_tuple] = chains.get(new_tuple, 0)  
-    print(chains)
-     
+        if key not in chains:
+            chains[key] = [] #if words from key not in chain ==> value will be empty list
 
+        chains[key].append(value) #add values to the chain
 
-        #index+= 1
-        #new_word_list = word_list[index: index+2]
-        # two_words.append(new_word_list)
-        # index+= 1
-
-        # """test_list = []
-        # for test in word_list:
-
-        #     x = two_words.append(word_list[index])
-        #     y = two_words.append(word_list[index+1])
-        #     #index+=1 
-        #     test_tuple.append(x)
-        #     test_tuple.append(y)"""
-        # two_words.append(word_list[index])
-        # two_words.append(word_list[index+1])
-
-            # break
-    #print(test_tuple)
-            
-    #print(two_words)
-
-    #print(index, word_list[index])
-
-    
-
-
-
-
-    #print(pairs)
-    
-
-    #word_tuples = ()
-    #return chains
+    return chains
 
 
 def make_text(chains):
