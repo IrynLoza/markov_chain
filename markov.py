@@ -12,20 +12,18 @@ def open_and_read_file(file_path):
 
     # your code goes here
 
-    input_path = ''
+    words = ''
     
     for line in file_path:
         line = line.rstrip()
         full_line = line.split(' ')
         for word in full_line:
-            input_path = input_path + ' ' + word
+            words = words + ' ' + word
 
-    #return input_path
+    return words
     #"Contents of your file as one long string"
-    print(input_path)
 
-    return "Contents of your file as one long string"
-  
+
 
 
 def make_chains(text_string):
@@ -51,14 +49,68 @@ def make_chains(text_string):
         
         >>> chains[('there','juanita')]
         [None]
-    """
+    """ 
 
-    #chains = {}
-    #key = input_path[0] + ' ' + input_path[1]
-    #print(key)
-
+  
     # your code goes here
 
+    word_list = text_string.split(' ')
+    word_list.pop(0)
+    chains = {}
+    
+
+    #word_count = {}
+    #for item in word_list:
+
+    #for i in range(len(text-1)):
+        #print text[i] text[i+1]
+    
+         
+ 
+    for index in range(len(word_list)):
+    
+        #index = 0
+        #print(index)
+    
+        new_word_list = word_list[index: index + 2]
+        new_tuple = tuple(new_word_list)
+        chains[new_tuple] = chains.get(new_tuple, 0)  
+    print(chains)
+     
+
+
+        #index+= 1
+        #new_word_list = word_list[index: index+2]
+        # two_words.append(new_word_list)
+        # index+= 1
+
+        # """test_list = []
+        # for test in word_list:
+
+        #     x = two_words.append(word_list[index])
+        #     y = two_words.append(word_list[index+1])
+        #     #index+=1 
+        #     test_tuple.append(x)
+        #     test_tuple.append(y)"""
+        # two_words.append(word_list[index])
+        # two_words.append(word_list[index+1])
+
+            # break
+    #print(test_tuple)
+            
+    #print(two_words)
+
+    #print(index, word_list[index])
+
+    
+
+
+
+
+    #print(pairs)
+    
+
+    #word_tuples = ()
     #return chains
 
 
@@ -72,7 +124,7 @@ def make_text(chains):
     return " ".join(words)
 
 
-#input_path = open("green-eggs.txt")
+input_path = open("green-eggs.txt")
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
@@ -84,3 +136,5 @@ chains = make_chains(input_text)
 random_text = make_text(chains)
 
 print(random_text)
+print(input_text)
+
