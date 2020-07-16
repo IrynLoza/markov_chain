@@ -75,7 +75,20 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
+    keys = list(chains.keys())
+    key = choice(keys)
+
+    words = [key[0], key[1]]
+    while key in chains:
+        # Keep looping until we have a key that isn't in the chains
+        # (which would mean it was the end of our original text).
+
+        # Note that for long texts (like a full book), this might mean
+        # it would run for a very long time.
+
+        word = choice(chains[key])
+        words.append(word)
+        key = (key[1], word)
 
     # your code goes here
 
@@ -94,5 +107,4 @@ chains = make_chains(input_text)
 random_text = make_text(chains)
 
 print(random_text)
-print(input_text)
 
